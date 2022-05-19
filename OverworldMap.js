@@ -8,48 +8,69 @@ class OverworldMap {
 
     this.upperImage = new Image();
     this.upperImage.src = config.upperSrc;
+
+    this.isCutscenePlaying = false;
   }
 
   drawLowerImage(ctx, cameraPerson) {
-    ctx.drawImage(this.lowerImage,
-      utils.withGrid(10.5) - cameraPerson.x,
+    ctx.drawImage(
+      this.lowerImage, 
+      utils.withGrid(10.5) - cameraPerson.x, 
       utils.withGrid(6) - cameraPerson.y
       )
   }
 
   drawUpperImage(ctx, cameraPerson) {
-    ctx.drawImage(this.upperImage,
-      utils.withGrid(10.5) - cameraPerson.x,
+    ctx.drawImage(
+      this.upperImage, 
+      utils.withGrid(10.5) - cameraPerson.x, 
       utils.withGrid(6) - cameraPerson.y
-      )
+    )
   } 
 
-  isSpaceTaken(currentX, currentY, direction){
-    const{x,y} = utils.nextPosition(currentX, currentY, direction);
+  isSpaceTaken(currentX, currentY, direction) {
+    const {x,y} = utils.nextPosition(currentX, currentY, direction);
     return this.walls[`${x},${y}`] || false;
   }
 
-  mountObjects(){
-    Object.values(this.gameObjects).forEach(o => {
+  mountObjects() {
+    Object.keys(this.gameObjects).forEach(key => {
+
+      let object = this.gameObjects[key];
+      object.id = key;
 
       //TODO: hacer que compruebe si el objeto deberia montarse o no
+      object.mount(this);
 
-      o.mount(this);
     })
   }
 
+  async startCutscene(events) {
+    this.isCutscenePlaying = true;
+
+    for (let i=0; i<events.length; i++) {
+      const eventHandler = new OverworldEvent({
+        event: events[i],
+        map: this,
+      })
+      await eventHandler.init();
+    }
+
+    this.isCutscenePlaying = false;
+  }
+
   //añade un muro
-  addWall(x,y){
+  addWall(x,y) {
     this.walls[`${x},${y}`] = true;
   }
 
   //borra un muro
-  removeWall(x, y){
+  removeWall(x,y) {
     delete this.walls[`${x},${y}`]
   }
 
   //mueve un muro
-  moveWall(wasX, wasY, direction){
+  moveWall(wasX, wasY, direction) {
     this.removeWall(wasX, wasY); //borra el muro
     const {x,y} = utils.nextPosition(wasX, wasY, direction); //crea uno nuevo en la siguiente posicion a donde lo habiamos borrado
     this.addWall(x,y); //lo coloca
@@ -67,11 +88,29 @@ window.OverworldMaps = {
         x: utils.withGrid(5),
         y: utils.withGrid(6),
       }),
-      npc1: new Person({
+      npcA: new Person({
         x: utils.withGrid(7),
         y: utils.withGrid(9),
-        src: "/images/characters/people/npc1.png"
-      })
+        src: "/images/characters/people/npc1.png",
+        behaviorLoop: [
+          { type: "stand",  direction: "left", time: 800 },
+          { type: "stand",  direction: "up", time: 800 },
+          { type: "stand",  direction: "right", time: 1200 },
+          { type: "stand",  direction: "up", time: 300 },
+        ]
+      }),
+      npcB: new Person({
+        x: utils.withGrid(3),
+        y: utils.withGrid(7),
+        src: "/images/characters/people/npc2.png",
+        behaviorLoop: [
+          { type: "walk",  direction: "left" },
+          { type: "stand",  direction: "up", time: 800 },
+          { type: "walk",  direction: "up" },
+          { type: "walk",  direction: "right" },
+          { type: "walk",  direction: "down" },
+        ]
+      }),
     },
     walls: {
       //mesa
@@ -115,7 +154,6 @@ window.OverworldMaps = {
       [utils.asGridCoord(0,6)] : true,
       [utils.asGridCoord(0,5)] : true,
       [utils.asGridCoord(0,4)] : true,
-
     }
   },
   Kitchen: {
@@ -123,7 +161,6 @@ window.OverworldMaps = {
     upperSrc: "/images/maps/KitchenUpper.png",
     gameObjects: {
       hero: new Person({
-        isPlayerControlled: true,
         x: utils.withGrid(5),
         y: utils.withGrid(6)
       }),
@@ -187,8 +224,6 @@ window.OverworldMaps = {
       [utils.asGridCoord(0,6)] : true,
       [utils.asGridCoord(0,5)] : true,
       [utils.asGridCoord(0,4)] : true,
-      
-    
-    },
-  }
+    }
+  },
 }
