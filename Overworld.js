@@ -44,22 +44,49 @@ class Overworld {
     step();
  }
 
+
+ bindActionInput(){
+   new KeyPressListener("Enter", () => {
+     //Hay algun npc aqui con el que hablar?
+     this.map.checkForActionCutscene();
+   })
+ }
+
+ bindHeroPositionCheck(){
+   document.addEventListener("PersonWalkingComplete", e => {
+     if(e.detail.whoId === "hero") {
+        this.map.checkForFootstepCutscene();
+     }
+   });
+ }
+
+ startMap(mapConfig){
+   this.map = new OverworldMap(mapConfig);
+   this.map.overworld = this;
+   this.map.mountObjects();
+ }
+
+
  init() {
-  this.map = new OverworldMap(window.OverworldMaps.DemoRoom);//Asocia al atributo mapa una nueva instancia de Overworldmaps (especificando entre todos los mapas que hay disponibles)
-  this.map.mountObjects();
+  this.startMap(window.OverworldMaps.DemoRoom);
+
+
+  this.bindActionInput();
+  this.bindHeroPositionCheck();
 
   this.directionInput = new DirectionInput();//Se crea una nueva instancia de DirectionInput
   this.directionInput.init();//Se llama al metodo init del DirectionInpuit que acabamos de crear, para configurar y preparar los actionListeners para el movimiento
 
   this.startGameLoop(); //Se llama al metodo de esta misma clase
 
-  // this.map.startCutscene([
-  //   { who: "hero", type: "walk",  direction: "down" },
-  //   { who: "hero", type: "walk",  direction: "down" },
-  //   { who: "npcA", type: "walk",  direction: "left" },
-  //   { who: "npcA", type: "walk",  direction: "left" },
-  //   { who: "npcA", type: "stand",  direction: "up", time: 800 },
-  // ])
+  this.map.startCutscene([
+    // { type: "textMessage", text: "PERO BUENO FOLAGOR!!!"}
+    // { who: "hero", type: "walk",  direction: "down" },
+    // { who: "hero", type: "walk",  direction: "down" },
+    // { who: "npcA", type: "walk",  direction: "left" },
+    // { who: "npcA", type: "walk",  direction: "left" },
+    // { who: "npcA", type: "stand",  direction: "up", time: 800 },
+  ])
 
  }
 }

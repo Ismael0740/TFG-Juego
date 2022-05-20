@@ -5,6 +5,7 @@ class Person extends GameObject {
     //Es decir, cada casilla que se desplace el personaje hara que esta variable se convierta en 16 y pase hasta 0
     //(si no tuvieramos esto y fuera un cambio de ubicacion instantaneo el personaje se teletransportaria de golpe a la siguiente ubicacion,
     //de esta manera los va recorriendo de manera organica)
+    this.isStanding = false;
 
 
     this.isPlayerControlled = config.isPlayerControlled || false;
@@ -59,10 +60,12 @@ class Person extends GameObject {
     }
 
     if (behavior.type === "stand") {
+      this.isStanding = true;
       setTimeout(() => {
         utils.emitEvent("PersonStandComplete", {
           whoId: this.id
         })
+        this.isStanding = false;
       }, behavior.time)
     }
 

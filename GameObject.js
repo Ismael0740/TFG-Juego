@@ -13,6 +13,8 @@ class GameObject {
     this.behaviorLoop = config.behaviorLoop || [];
     this.behaviorLoopIndex = 0;
 
+    this.talking = config.talking || [];
+
   }
 
   mount(map) {
@@ -32,7 +34,7 @@ class GameObject {
   async doBehaviorEvent(map) { 
 
   //Sale del bucle de recursividad si hay alguna cutscene mas importante o no hay configuraciones en el array de behaviorLoop
-    if (map.isCutscenePlaying || this.behaviorLoop.length === 0) {
+    if (map.isCutscenePlaying || this.behaviorLoop.length === 0 || this.isStanding) {
       return;
     }
 
