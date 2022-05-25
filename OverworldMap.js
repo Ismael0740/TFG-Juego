@@ -106,6 +106,7 @@ class OverworldMap {
 }
 
 window.OverworldMaps = {
+  //--------------------------------------------DEMO ROOM-------------------------------------------------
   DemoRoom: {
     lowerSrc: "/images/maps/DemoLower.png",
     upperSrc: "/images/maps/DemoUpper.png",
@@ -113,12 +114,15 @@ window.OverworldMaps = {
       hero: new Person({
         isPlayerControlled: true,
         x: utils.withGrid(5),
-        y: utils.withGrid(6),
+        y: utils.withGrid(10),
+        src: "/images/characters/people/hero.png",
+        useShadow: true
       }),
       npcA: new Person({
         x: utils.withGrid(7),
         y: utils.withGrid(9),
-        src: "/images/characters/people/npc1.png",
+        src: "/images/characters/people/pj5.png",
+        useShadow: true,
         behaviorLoop: [
           { type: "stand",  direction: "left", time: 800 },
           { type: "stand",  direction: "up", time: 800 },
@@ -145,7 +149,8 @@ window.OverworldMaps = {
       npcB: new Person({
         x: utils.withGrid(8),
         y: utils.withGrid(5),
-        src: "/images/characters/people/npc2.png",
+        src: "/images/characters/people/pj4.png",
+        useShadow: true,
         talking: [
           {
             events: [
@@ -242,12 +247,13 @@ window.OverworldMaps = {
       [utils.asGridCoord(5,10)]: [
         {
           events: [
-            {type: "changeMap", map: "Kitchen" }
+            {type: "changeMap", map: "Street" }
           ]
         }
       ]
     }
   },
+  //--------------------------------------------COCINA-------------------------------------------------
   Kitchen: {
     lowerSrc: "/images/maps/KitchenLower.png",
     upperSrc: "/images/maps/KitchenUpper.png",
@@ -255,12 +261,15 @@ window.OverworldMaps = {
       hero: new Person({
         isPlayerControlled: true,
         x: utils.withGrid(5),
-        y: utils.withGrid(10)
+        y: utils.withGrid(10),
+        src: "/images/characters/people/hero.png",
+        useShadow: true,
       }),
       npcA: new Person({
         x: utils.withGrid(10),
         y: utils.withGrid(8),
-        src: "/images/characters/people/npc3.png",
+        src: "/images/characters/people/pj3.png",
+        useShadow: true,
         talking: [
           {
             events: [
@@ -338,7 +347,284 @@ window.OverworldMaps = {
       [utils.asGridCoord(5,10)]: [
         {
           events: [
+            {type: "changeMap", map: "Street" }
+          ]
+        }
+      ]
+    }
+  },
+  //--------------------------------------------COCINA VERDE-------------------------------------------------
+  GreenKitchen: {
+    lowerSrc: "/images/maps/GreenKitchenLower.png",
+    upperSrc: "/images/maps/GreenKitchenUpper.png",
+    gameObjects: {
+      hero: new Person({
+        isPlayerControlled: true,
+        x: utils.withGrid(9),
+        y: utils.withGrid(5),
+        src: "/images/characters/people/hero.png",
+        useShadow: true
+      }),
+      npcA: new Person({
+        x: utils.withGrid(4),
+        y: utils.withGrid(9),
+        src: "/images/characters/people/pj1.png",
+        useShadow: true,
+        talking: [
+          {
+            events: [
+              {type: "textMessage", text: "Hombre indignado: Llevo 1 hora esperando a que alguien me traiga la comida!!", faceHero: "npcA"},
+              {type: "textMessage", text: "Hombre indignado: Cuanto rato tengo que seguir esperando.", faceHero: "npcA"},
+              {type: "textMessage", text: "Hombre indignado: Desde luego esto es indignante...", faceHero: "npcA"},
+              {type: "textMessage", text: "Hombre indignado: Espera un momento.", faceHero: "npcA"},
+              {type: "textMessage", text: "Hombre indignado: La verdad es que no he llegado a pedir comida, supongo que por eso nadie a venido a servirme.", faceHero: "npcA"},
+
+            ]
+          }
+        ]
+      }),
+      nevera: new Person({
+        x: utils.withGrid(1),
+        y: utils.withGrid(3),
+        talking: [
+          {
+            events: [
+              {type: "textMessage", text: "Al abrir la nevera te das cuenta de que esta vacia.", faceHero: "npcA"},
+              {type: "textMessage", text: "Una verdadera lastima porque tenias mucha hambre", faceHero: "npcA"},
+              { who: "hero", type: "stand",  direction: "up", time: 500 },
+              {type: "textMessage", text: "Espera un segundo. Esta no es tu nevera!", faceHero: "npcA"},
+              {type: "textMessage", text: "Que haces robando comida ajena! No te dijeron en casa que robar esta mal?!", faceHero: "npcA"},
+            ]
+          }
+        ]
+      }),
+      placa1: new Person({
+        x: utils.withGrid(3),
+        y: utils.withGrid(3),
+        talking: [
+          {
+            events: [
+              {type: "textMessage", text: "Una placa de vitroceramica, pero no tienes ninguna sarten....", faceHero: "npcA"},
+              { who: "hero", type: "stand",  direction: "up", time: 500 },
+              {type: "textMessage", text: "Ademas esta sigue sin ser tu casa. Quieres largarte de una vez!!", faceHero: "npcA"},
+            ]
+          }
+        ]
+      }),
+      placa2: new Person({
+        x: utils.withGrid(4),
+        y: utils.withGrid(3),
+        talking: [
+          {
+            events: [
+              {type: "textMessage", text: "Una placa de vitroceramica, pero no tienes ninguna sarten....", faceHero: "npcA"},
+              { who: "hero", type: "stand",  direction: "up", time: 500 },
+              {type: "textMessage", text: "Ademas esta sigue sin ser tu casa. Quieres largarte de una vez!!", faceHero: "npcA"},
+            ]
+          }
+        ]
+      }),
+      estanteria1: new Person({
+        x: utils.withGrid(6),
+        y: utils.withGrid(3),
+        talking: [
+          {
+            events: [
+              {type: "textMessage", text: "Es una estanteria con lo que parece ser....", faceHero: "npcA"},
+              {type: "textMessage", text: "Sinceramente, no se que es eso. Parecen botes de cristal.", faceHero: "npcA"},
+              { who: "hero", type: "stand",  direction: "down", time: 500 },
+              {type: "textMessage", text: "Pero tu que te piensas, que se lo que es cada cosa en este nivel?", faceHero: "npcA"},
+              {type: "textMessage", text: "Aunque sea el creador del juego, yo no he dibujado los mapas, asi que preguntale a otro.", faceHero: "npcA"},
+              {type: "textMessage", text: "Ademas, se ve muy mal desde aqui arriba.", faceHero: "npcA"},
+            ]
+          }
+        ]
+      }),
+      estanteria2: new Person({
+        x: utils.withGrid(7),
+        y: utils.withGrid(3),
+        talking: [
+          {
+            events: [
+              {type: "textMessage", text: "Que pesao, sigo sin saber lo que hay en la estanteria, da igual desde donde lo mires.", faceHero: "npcA"},
+            ]
+          }
+        ]
+      }),
+    },
+    
+    walls: {
+      //paredes
+      [utils.asGridCoord(9,4)] : true,
+      [utils.asGridCoord(8,4)] : true,
+      [utils.asGridCoord(10,5)] : true,
+      [utils.asGridCoord(10,6)] : true,
+      [utils.asGridCoord(10,7)] : true,
+      [utils.asGridCoord(10,8)] : true,
+      [utils.asGridCoord(10,9)] : true,
+      [utils.asGridCoord(10,10)] : true,
+      [utils.asGridCoord(10,11)] : true,
+      [utils.asGridCoord(9,12)] : true,
+      [utils.asGridCoord(8,12)] : true,
+      [utils.asGridCoord(7,12)] : true,
+      [utils.asGridCoord(6,12)] : true,
+      [utils.asGridCoord(5,13)] : true,
+      [utils.asGridCoord(4,12)] : true,
+      [utils.asGridCoord(3,12)] : true,
+      [utils.asGridCoord(2,12)] : true,
+      [utils.asGridCoord(1,12)] : true,
+      [utils.asGridCoord(0,11)] : true,
+      [utils.asGridCoord(0,10)] : true,
+      [utils.asGridCoord(0,9)] : true,
+      [utils.asGridCoord(0,8)] : true,
+      [utils.asGridCoord(0,7)] : true,
+      [utils.asGridCoord(0,6)] : true,
+      [utils.asGridCoord(0,5)] : true,
+      [utils.asGridCoord(0,4)] : true,
+      [utils.asGridCoord(2,3)] : true,
+      [utils.asGridCoord(5,3)] : true,
+      [utils.asGridCoord(1,6)] : true,
+      [utils.asGridCoord(2,6)] : true,
+      [utils.asGridCoord(3,6)] : true,
+      [utils.asGridCoord(4,6)] : true,
+      [utils.asGridCoord(5,6)] : true,
+      [utils.asGridCoord(6,6)] : true,
+      
+    },
+    cutsceneSpaces: {
+      [utils.asGridCoord(5,12)]: [
+        {
+          events: [
+            {type: "changeMap", map: "StreetNorth" }
+          ]
+        }
+      ]
+    }
+  },
+  //--------------------------------------------EXTERIOR 1-------------------------------------------------
+  StreetNorth: {
+    lowerSrc: "/images/maps/StreetNorthLower.png",
+    upperSrc: "/images/maps/StreetNorthUpper.png",
+    gameObjects: {
+      hero: new Person({
+        isPlayerControlled: true,
+        x: utils.withGrid(7),
+        y: utils.withGrid(4),
+        src: "/images/characters/people/hero.png",
+        useShadow: true
+      }),
+      npcA: new Person({
+        x: utils.withGrid(10),
+        y: utils.withGrid(8),
+        src: "/images/characters/people/pj2.png",
+        useShadow: true,
+        talking: [
+          {
+            events: [
+              {type: "textMessage", text: "Dejame tranquilo pesao, que eres un pesao", faceHero: "npcA"},
+              { who: "hero", type: "walk",  direction: "left" },
+              { who: "npcA", type: "stand",  direction: "left", time: 5 },
+              {type: "textMessage", text: "ESPERA!!"},
+              { who: "hero", type: "stand",  direction: "left", time: 500 },
+              { who: "hero", type: "stand",  direction: "right", time: 1500 },
+              {type: "textMessage", text: "me he pasado un poco, me perdonas??"},
+              {type: "textMessage", text: "..??"},
+              {type: "textMessage", text: "......??"},
+              {type: "textMessage", text: "Pero di algo!"},
+              {type: "textMessage", text: "Que verguenza!!"},
+              { who: "npcA", type: "walk",  direction: "right" },
+              { who: "npcA", type: "walk",  direction: "down" },
+              { who: "npcA", type: "walk",  direction: "right" },
+              { who: "npcA", type: "stand",  direction: "right", time: 1000 },
+            ]
+          }
+        ]
+      })
+    },
+    walls: {
+      //mesas
+      
+    },
+    cutsceneSpaces: {
+      [utils.asGridCoord(7,4)]: [
+        {
+          events: [
+            {type: "changeMap", map: "GreenKitchen" }
+          ]
+        }
+      ],
+      [utils.asGridCoord(7,16)]: [
+        {
+          events: [
+            {type: "changeMap", map: "Street" }
+          ]
+        }
+      ],
+    }
+  },
+  //-------------------------------------EXTERIOR 2-----------------------------------------------
+  Street: {
+    lowerSrc: "/images/maps/StreetLower.png",
+    upperSrc: "/images/maps/StreetUpper.png",
+    gameObjects: {
+      hero: new Person({
+        isPlayerControlled: true,
+        x: utils.withGrid(25),
+        y: utils.withGrid(5),
+        src: "/images/characters/people/hero.png",
+        useShadow: true
+      }),
+      npcA: new Person({
+        x: utils.withGrid(10),
+        y: utils.withGrid(8),
+        src: "/images/characters/people/pj2.png",
+        useShadow: true,
+        talking: [
+          {
+            events: [
+              {type: "textMessage", text: "Dejame tranquilo pesao, que eres un pesao", faceHero: "npcA"},
+              { who: "hero", type: "walk",  direction: "left" },
+              { who: "npcA", type: "stand",  direction: "left", time: 5 },
+              {type: "textMessage", text: "ESPERA!!"},
+              { who: "hero", type: "stand",  direction: "left", time: 500 },
+              { who: "hero", type: "stand",  direction: "right", time: 1500 },
+              {type: "textMessage", text: "me he pasado un poco, me perdonas??"},
+              {type: "textMessage", text: "..??"},
+              {type: "textMessage", text: "......??"},
+              {type: "textMessage", text: "Pero di algo!"},
+              {type: "textMessage", text: "Que verguenza!!"},
+              { who: "npcA", type: "walk",  direction: "right" },
+              { who: "npcA", type: "walk",  direction: "down" },
+              { who: "npcA", type: "walk",  direction: "right" },
+              { who: "npcA", type: "stand",  direction: "right", time: 1000 },
+            ]
+          }
+        ]
+      })
+    },
+    walls: {
+      //mesas
+      
+    },
+    cutsceneSpaces: {
+      [utils.asGridCoord(25,5)]: [
+        {
+          events: [
+            {type: "changeMap", map: "StreetNorth" }
+          ]
+        }
+      ],
+      [utils.asGridCoord(29,8)]: [
+        {
+          events: [
             {type: "changeMap", map: "DemoRoom" }
+          ]
+        }
+      ],
+      [utils.asGridCoord(5,8)]: [
+        {
+          events: [
+            {type: "changeMap", map: "Kitchen" }
           ]
         }
       ]
