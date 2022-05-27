@@ -41,8 +41,7 @@ class OverworldMap {
       let object = this.gameObjects[key];
       object.id = key;
 
-      //TODO: hacer que compruebe si el objeto deberia montarse o no
-      object.mount(this);
+      object.mount(this); //Comprueba si el objeto deberia montarse o no
 
     })
   }
@@ -132,12 +131,12 @@ window.OverworldMaps = {
         talking: [
           {
             events: [
-              {type: "textMessage", text: "Hola como va?", faceHero: "npcA"},
-              {type: "textMessage", text: "No te procupes si me ves aqui todo el dia"},
-              {type: "textMessage", text: "Me pegan por estar aqui"},
+              {type: "textMessage", text: "Manolo: Hola como va?", faceHero: "npcA"},
+              {type: "textMessage", text: "Manolo: No te procupes si me ves aqui todo el dia"},
+              {type: "textMessage", text: "Manolo: Me pegan por estar aqui"},
               { who: "npcA", type: "stand",  direction: "down", time: 1200 },
-              {type: "textMessage", text: "Digo me pagan!", faceHero: "npcA"},
-              {type: "textMessage", text: "Aunque tambien me pegan..."},
+              {type: "textMessage", text: "Manolo: Digo me pagan!", faceHero: "npcA"},
+              {type: "textMessage", text: "Manolo: Aunque tambien me pegan..."},
             ]
           }
         ]
@@ -314,9 +313,9 @@ window.OverworldMaps = {
         talking: [
           {
             events: [
-              {type: "textMessage", text: "HOLA", faceHero: "npcA"},
-              {type: "textMessage", text: "Me estoy encargando de empaquetar el ultimo pedido para mandarselo al cliente.", faceHero: "npcA"},
-              {type: "textMessage", text: "No toques nada por favor", faceHero: "npcA"},
+              {type: "textMessage", text: "Empleado: HOLA", faceHero: "npcA"},
+              {type: "textMessage", text: "Empleado: Me estoy encargando de empaquetar el ultimo pedido para mandarselo al cliente.", faceHero: "npcA"},
+              {type: "textMessage", text: "Empleado: No toques nada por favor", faceHero: "npcA"},
             ]
           }
         ]
@@ -329,7 +328,7 @@ window.OverworldMaps = {
         talking: [
           {
             events: [
-              {type: "textMessage", text: "Esperar un segundo que me pierdo. Esto es muy dificil."},
+              {type: "textMessage", text: "Cocinero Novato: Esperar un segundo que me pierdo. Esto es muy dificil."},
             ]
           }
         ]
@@ -342,7 +341,7 @@ window.OverworldMaps = {
         talking: [
           {
             events: [
-              {type: "textMessage", text: "Voy a hacerlo perfecto. Voy a conseguir el empleado del mes. VAMOS."},
+              {type: "textMessage", text: "Cocinero Abuson: Voy a hacerlo perfecto. Voy a conseguir el empleado del mes. VAMOS."},
             ]
           }
         ]
@@ -355,7 +354,7 @@ window.OverworldMaps = {
         talking: [
           {
             events: [
-              {type: "textMessage", text: "Esto se hace asi chicos. Venga va con mas animo."},
+              {type: "textMessage", text: "Jefa Restaurante: Esto se hace asi chicos. Venga va con mas animo."},
             ]
           }
         ]

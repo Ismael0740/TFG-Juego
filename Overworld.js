@@ -79,21 +79,21 @@ class Overworld {
 
   this.startGameLoop(); //Se llama al metodo de esta misma clase
 
-  // this.map.startCutscene([
+  this.map.startCutscene([
 
-  //   { who: "npcA", type: "stand",  direction: "down", time: 1200 },
-  //   { type: "textMessage", text: "HOLA!!!"},
-  //   { type: "textMessage", text: "Y bienvenido a FINAL GAME."},
-  //   { type: "textMessage", text: "Un juego hecho por mi, el maravilloso Ismael."},
-  //   { who: "npcA", type: "stand",  direction: "down", time: 1000 },
-  //   { type: "textMessage", text: "No ahora en serio."},
-  //   { type: "textMessage", text: "Espero que disfrutes de la experiencia!"},
-  //   { type: "textMessage", text: "En la version actual del juego no esta implementado el sistema de combate ni la progresion."},
-  //   { type: "textMessage", text: "Por lo que tendras que conformarte con caminar por ahi y hablar con los personajes :("},
-  //   { type: "textMessage", text: "Aun asi he preparado un MONTON de dialogos, asi que espero que te gusten."},
-  //   { type: "textMessage", text: "Un saludo!!!"},
+    { who: "npcA", type: "stand",  direction: "down", time: 1200 },
+    { type: "textMessage", text: "HOLA!!!"},
+    { type: "textMessage", text: "Y bienvenido a FINAL GAME."},
+    { type: "textMessage", text: "Un juego hecho por mi, el maravilloso Ismael."},
+    { who: "npcA", type: "stand",  direction: "down", time: 1000 },
+    { type: "textMessage", text: "No ahora en serio."},
+    { type: "textMessage", text: "Espero que disfrutes de la experiencia!"},
+    { type: "textMessage", text: "En la version actual del juego no esta implementado el sistema de combate ni la progresion."},
+    { type: "textMessage", text: "Por lo que tendras que conformarte con caminar por ahi y hablar con los personajes :("},
+    { type: "textMessage", text: "Aun asi he preparado un MONTON de dialogos, asi que espero que te gusten."},
+    { type: "textMessage", text: "Un saludo!!!"},
      
-  // ])
+  ])
 
  }
 }
