@@ -41,7 +41,7 @@ class OverworldMap {
       let object = this.gameObjects[key];
       object.id = key;
 
-      object.mount(this); //Comprueba si el objeto deberia montarse o no
+      object.mount(this);
 
     })
   }
@@ -171,7 +171,7 @@ window.OverworldMaps = {
           {
             events: [
               {type: "textMessage", text: "Karma: Hola que tal, me llamo Karma.", faceHero: "npcC"},
-              {type: "textMessage", text: "Karma: Toma ostia!!", faceHero: "npcB"},
+              {type: "textMessage", text: "Karma: Toma hostia!!", faceHero: "npcB"},
               { who: "hero", type: "stand",  direction: "up", time: 80 },
               { who: "hero", type: "stand",  direction: "down", time: 80 },
               { who: "hero", type: "stand",  direction: "left", time: 80 },

@@ -14,6 +14,7 @@ class DirectionInput {
     }
   }
 
+  //devuelve la posicion 0 del array, es decir la direccion en la que se mueve el personaje con mayor prioridad
   get direction() {
     return this.heldDirections[0];
   }
